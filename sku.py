@@ -1,11 +1,10 @@
-from browser import document
+from browser import document # type: ignore
 
 def SKU_generator(e):
     category = document.getElementById('category').value
     product_name = document.getElementById('product_name').value
     stock_qty = document.getElementById('quantity').value
 
-    # Validate that a category is selected
     if not category:
         document.getElementById('sku_output').innerHTML = '<span class="text-red-500 font-sans text-xs">Please select a valid category.</span>'
         return
@@ -14,7 +13,6 @@ def SKU_generator(e):
     qty = str(stock_qty) if stock_qty else "0"
 
     sku = category[:3].upper() + "-" + prod_code + "-" + qty
-    document.getElementById('sku_output').innerHTML = f"<strong>SKU: </strong> {sku}"
+    document.getElementById('sku_output').innerHTML = f"<strong>SKU:</strong>&nbsp;{sku}"
 
-# Bind the button click event to the Python function
 document["sku_btn"].bind("click", SKU_generator)
