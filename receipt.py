@@ -1,11 +1,10 @@
-from browser import document
+from browser import document # type: ignore
 
 def create_order(e):
     prod1 = document.getElementById("spirit")
     prod2 = document.getElementById("grappler")
     prod3 = document.getElementById("glider")
 
-    # Calculate subtotal by multiplying checkbox value by its checked status (1 or 0)
     subtotal = (float(prod1.value) * prod1.checked +
                 float(prod2.value) * prod2.checked +
                 float(prod3.value) * prod3.checked)
@@ -24,5 +23,4 @@ def create_order(e):
     """
     document.getElementById("show").innerHTML = receipt
 
-# Bind the calculate button to the create_order function
 document["calc_btn"].bind("click", create_order)
